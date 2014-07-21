@@ -2,13 +2,16 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
-simple_search: https://www.google.com/search
-description:
-
+url: http://modxws.github.io
+title: 'MODX, фронтэнд и другие уроки'
+subtitle: Frontend Ninja blog
+author: Viktor Matushevskyi
+lunr_search: true
+simple_search: #http://google.com/search
+description: 
+languages: ["ru", "en", "uk"]
+site:
+  lang: ru
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime

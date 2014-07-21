@@ -3,6 +3,7 @@ source "https://rubygems.org"
 group :development do
   gem 'rake', '~> 10.0'
   gem 'jekyll', '~> 2.0'
+  gem 'jekyll-assets'
   gem 'jekyll-page-hooks', '~> 1.2'
   gem 'jekyll-date-format', '~> 1.0'
   gem 'jekyll-sitemap'
@@ -14,6 +15,7 @@ group :development do
   gem 'rubypants', '~> 0.2.0'
   gem 'rb-fsevent', '~> 0.9'
   gem 'stringex', '~> 1.4.0'
+  gem 'jekyll-multiple-languages-plugin'
 end
 
 gem 'sinatra', '~> 1.4.2'

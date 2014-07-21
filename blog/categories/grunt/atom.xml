@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[MODX, фронтэнд и другие уроки]]></title>
-  <link href="http://modxws.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Grunt | MODX, фронтэнд и другие уроки]]></title>
+  <link href="http://modxws.github.io/blog/categories/grunt/atom.xml" rel="self"/>
   <link href="http://modxws.github.io/"/>
   <updated>2014-07-22T02:15:11+03:00</updated>
   <id>http://modxws.github.io/</id>
@@ -66,25 +66,20 @@
 
 <p><img src="images/grunt/package-json-file.gif" alt="Создание конфигурационного Grunt файла" /></p>
 
-<p>Со&nbsp;следующим содержимым:</p>
+<p>Со&nbsp;следующим содержимым:
+```
+{
+  &ldquo;name&rdquo;: &ldquo;example-project&rdquo;,
+  &ldquo;version&rdquo;: &ldquo;0.1.0&rdquo;,
+  &ldquo;devDependencies&rdquo;: {</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "name": "example-project",
-</span><span class='line'>  "version": "0.1.0",
-</span><span class='line'>  "devDependencies": {
-</span><span class='line'>    "grunt": "~0.4.1"
-</span><span class='line'>  }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<pre><code>"grunt": "~0.4.1"
+</code></pre>
 
-
-<p>Можете спокойно менять название проекта и&nbsp;версию, но&nbsp;все devDependencies вещи должны оставаться такие как сейчас.</p>
+<p>  }
+}
+```
+Можете спокойно менять название проекта и&nbsp;версию, но&nbsp;все devDependencies вещи должны оставаться такие как сейчас.</p>
 
 <p>Это&nbsp;то, как Node работает с&nbsp;зависимостями. У&nbsp;Node есть менеджер пакетов, который называется <a href="https://npmjs.org/">NPM</a> (Node packaged modules) для управления Node зависимостями (например, как gem для Ruby, если вам такое знакомо). Вы&nbsp;даже можете думать об&nbsp;этом как о&nbsp;плагине для WordPress.</p>
 
@@ -92,11 +87,10 @@
 
 <p><img src="images/grunt/drag-folder.gif" alt="Смена директории в терминале для чайников" /></p>
 
-<p>И&nbsp;дальше запустил команду:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install</span></code></pre></td></tr></table></div></figure>
-
+<p>И&nbsp;дальше запустил команду:
+<code>
+npm install
+</code></p>
 
 <p>После запуска этой команды, появится новая папка в&nbsp;вашем проекте с&nbsp;названием node_modules.</p>
 
@@ -106,11 +100,10 @@
 
 <p>Последний шаг в&nbsp;инсталяции&nbsp;— это установить Grunt CLI (command line interface&nbsp;— интерфейс командной строки). Это&nbsp;то, что даёт возможность запускать grunt команды из&nbsp;строки. Без этого, любые grunt команды просто вызовут ошибку «Command Not Found». Эта отдельная установка нужна для эфективности. Иначе&nbsp;бы у&nbsp;вас было 10&nbsp;проектов с&nbsp;10&nbsp;копиями Grunt CLI.</p>
 
-<p>Дальше запустите следующую команду в&nbsp;терминале:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install -g grunt-cli</span></code></pre></td></tr></table></div></figure>
-
+<p>Дальше запустите следующую команду в&nbsp;терминале:
+<code>
+npm install -g grunt-cli
+</code></p>
 
 <p>Дальше закройте и&nbsp;откройте терминал. Это один из&nbsp;способов проверить правильно&nbsp;ли всё работает. Схоже с&nbsp;перезапуском компьютера в&nbsp;старые добрые времена, как при установке какой-либо программы.</p>
 
@@ -131,100 +124,69 @@
 
 <p>Официальный Grunt плагин для объединения файлов&nbsp;— это <a href="https://github.com/gruntjs/grunt-contrib-concat">grunt-contrib-concat</a>. Вы&nbsp;можете прочитать о&nbsp;нём на&nbsp;Гитхабе, но&nbsp;для работы всё что нужно&nbsp;— это запустить следующую команду из&nbsp;строки (естественно в&nbsp;корне вашего проекта):</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm install grunt-contrib-concat --save-dev
-</span></code></pre></td></tr></table></div></figure>
+<p><code>bash
+npm install grunt-contrib-concat --save-dev
+</code></p>
 
-
-<p>Толково будет сделать это следующим образом: ваш package.json файл будет автообновится, чтобы включить эту новую зависимость. Откройте и&nbsp;проверьте файл. Вы&nbsp;увидите новую строку:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="s2">&quot;grunt-contrib-concat&quot;</span>: <span class="s2">&quot;~0.3.0&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p>Толково будет сделать это следующим образом: ваш package.json файл будет автообновится, чтобы включить эту новую зависимость. Откройте и&nbsp;проверьте файл. Вы&nbsp;увидите новую строку:
+<code>
+"grunt-contrib-concat": "~0.3.0"
+</code></p>
 
 <p>Теперь можна использовать это. Нам нужно сконфигурировать Grunt и&nbsp;задать ему задачу.</p>
 
 <p>Вы&nbsp;сообщаете Grunt, что делать через конфигурационный файл с&nbsp;названием Gruntfile.js2</p>
 
-<p>Совсем как наш package.json файл, наш Gruntfile.js имеет специальный формат, который должен соблюдаться. Не&nbsp;важно что там значит каждое слово&nbsp;— просто взгляните на&nbsp;<a href="https://github.com/gruntjs/grunt-contrib-concat#usage-examples">пример использования</a>:</p>
+<p>Совсем как наш package.json файл, наш Gruntfile.js имеет специальный формат, который должен соблюдаться. Не&nbsp;важно что там значит каждое слово&nbsp;— просто взгляните на&nbsp;<a href="https://github.com/gruntjs/grunt-contrib-concat#usage-examples">пример использования</a>:
+```
+module.exports = function(grunt) {</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>module.exports <span class="o">=</span> <span class="k">function</span><span class="o">(</span>grunt<span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>    // 1. Всё конфигурирование тут
-</span><span class='line'>    grunt.initConfig<span class="o">({</span>
-</span><span class='line'>        pkg: grunt.file.readJSON<span class="o">(</span><span class="s1">&#39;package.json&#39;</span><span class="o">)</span>,
-</span><span class='line'>
-</span><span class='line'>        concat: <span class="o">{</span>
-</span><span class='line'>            // 2. Конфигурация для объединения файлов тут.
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="o">})</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    // 3. Здесь мы сообщаем Grunt, что мы планируем использовать этот плагин:
-</span><span class='line'>    grunt.loadNpmTasks<span class="o">(</span><span class="s1">&#39;grunt-contrib-concat&#39;</span><span class="o">)</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    // 4. Мы сообщаем Grunt, что нужно делать, когда мы введём <span class="s2">&quot;grunt&quot;</span> в терминале.
-</span><span class='line'>    grunt.registerTask<span class="o">(</span><span class="s1">&#39;default&#39;</span>, <span class="o">[</span><span class="s1">&#39;concat&#39;</span><span class="o">])</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>// 1. Всё конфигурирование тут
+grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
 
+    concat: {
+        // 2. Конфигурация для объединения файлов тут.
+    }
+
+});
+
+// 3. Здесь мы сообщаем Grunt, что мы планируем использовать этот плагин:
+grunt.loadNpmTasks('grunt-contrib-concat');
+
+// 4. Мы сообщаем Grunt, что нужно делать, когда мы введём "grunt" в терминале.
+grunt.registerTask('default', ['concat']);
+</code></pre>
+
+<p>}
+```</p>
 
 <p>Теперь нам нужно создать эту конфигурацию. Документация может быть просто огромной. Давайте сосредоточимся на&nbsp;очень простом примере.</p>
 
 <p>Как вы&nbsp;помните, у&nbsp;нас 3&nbsp;JavaScript файла, которые нужно объединить. Укажим к&nbsp;ним пути в&nbsp;виде массива в&nbsp;src разделе (указываем пути в&nbsp;кавычках) и&nbsp;далее укажем результирующий файл в&nbsp;разделе dest. Наш результирующий файл может пока что не&nbsp;существовать. Он&nbsp;будет создан при запуске этой задачи и&nbsp;объединит все файлы.</p>
 
-<p>Оба наших файла <em>jquery.js</em> и&nbsp;<em>carousel.js</em>&nbsp;— это библиотеки. Скорее всего мы&nbsp;не&nbsp;будем их&nbsp;трогать. Поэтому для порядка, будем держать их&nbsp;в&nbsp;папке <em>/js/libs/</em>. Наш <em>global.js</em> файл&nbsp;— это место, где мы&nbsp;пишем наш код, поэтому он&nbsp;будет прямо в&nbsp;<em>/js/</em>&nbsp;папке. Теперь давайте сообщим Grunt найти все эти файлы и&nbsp;объединить их&nbsp;<a href="https://github.com/chriscoyier/My-Grunt-Boilerplate/blob/master/Gruntfile.js">вместе в&nbsp;один файл</a> с&nbsp;названием <em>production.js</em>.</p>
+<p>Оба наших файла <em>jquery.js</em> и&nbsp;<em>carousel.js</em>&nbsp;— это библиотеки. Скорее всего мы&nbsp;не&nbsp;будем их&nbsp;трогать. Поэтому для порядка, будем держать их&nbsp;в&nbsp;папке <em>/js/libs/</em>. Наш <em>global.js</em> файл&nbsp;— это место, где мы&nbsp;пишем наш код, поэтому он&nbsp;будет прямо в&nbsp;<em>/js/</em>&nbsp;папке. Теперь давайте сообщим Grunt найти все эти файлы и&nbsp;объединить их&nbsp;<a href="https://github.com/chriscoyier/My-Grunt-Boilerplate/blob/master/Gruntfile.js">вместе в&nbsp;один файл</a> с&nbsp;названием <em>production.js</em>.
+```
+concat: {</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>concat: <span class="o">{</span>
-</span><span class='line'>    dist: <span class="o">{</span>
-</span><span class='line'>        src: <span class="o">[</span>
-</span><span class='line'>            <span class="s1">&#39;js/libs/*.js&#39;</span>, // Все JS в папке libs
-</span><span class='line'>            <span class="s1">&#39;js/global.js&#39;</span>  // Какой-то файл
-</span><span class='line'>        <span class="o">]</span>,
-</span><span class='line'>        dest: <span class="s1">&#39;js/build/production.js&#39;</span>,
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>dist: {
+    src: [
+        'js/libs/*.js', // Все JS в папке libs
+        'js/global.js'  // Какой-то файл
+    ],
+    dest: 'js/build/production.js',
+}
+</code></pre>
 
+<p>}
+```</p>
 
 <p>Внимание: в&nbsp;этой статье будет маленькие чанки конфигурационного кода как я&nbsp;уже привёл выше. Целью является сфокусировать внимание на&nbsp;важных вещах, поэтому может вначале будет трудно понять как определённый чанк размещается в&nbsp;большем файле. Если вы&nbsp;запутаетесь, то&nbsp;тогда смотрите полный файл.</p>
 
-<p>С&nbsp;этой конфигурацией для объединения, перейдите в&nbsp;терминал и&nbsp;запустите команду:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>grunt
-</span></code></pre></td></tr></table></div></figure>
-
+<p>С&nbsp;этой конфигурацией для объединения, перейдите в&nbsp;терминал и&nbsp;запустите команду:
+<code>
+grunt
+</code></p>
 
 <p>Смотрите что произойдёт! Будет создан файл production.js и&nbsp;произойдёт объединение наших 3х&nbsp;файлов. Это был огого момент для меня! Почувствуйте колебание силы. Давайте ещё сделаем пару штукенций!</p>
 
@@ -240,43 +202,30 @@
 </ul>
 
 
-<p>Официальный плагин для минификации кода&nbsp;— это <a href="https://github.com/gruntjs/grunt-contrib-uglify">grunt-contrib-uglify</a>. Прямо как мы&nbsp;делали недавно, давайте запустим NPM команду для его установки:</p>
+<p>Официальный плагин для минификации кода&nbsp;— это <a href="https://github.com/gruntjs/grunt-contrib-uglify">grunt-contrib-uglify</a>. Прямо как мы&nbsp;делали недавно, давайте запустим NPM команду для его установки:
+<code>
+npm install grunt-contrib-uglify --save-dev
+</code>
+Далее внесём изменения в&nbsp;наш Gruntfile.js для загрузки плагина:
+<code>
+grunt.loadNpmTasks('grunt-contrib-uglify');
+</code>
+Далее сконфигурируем его:
+```
+ uglify: {</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm install grunt-contrib-uglify --save-dev
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>build: {
+    src: 'js/build/production.js',
+    dest: 'js/build/production.min.js'
+}
+</code></pre>
 
-
-<p>Далее внесём изменения в&nbsp;наш Gruntfile.js для загрузки плагина:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>grunt.loadNpmTasks<span class="o">(</span><span class="s1">&#39;grunt-contrib-uglify&#39;</span><span class="o">)</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Далее сконфигурируем его:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'> uglify: <span class="o">{</span>
-</span><span class='line'>    build: <span class="o">{</span>
-</span><span class='line'>        src: <span class="s1">&#39;js/build/production.js&#39;</span>,
-</span><span class='line'>        dest: <span class="s1">&#39;js/build/production.min.js&#39;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Изменим это дефолтное задание для запуска минификации:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>grunt.registerTask<span class="o">(</span><span class="s1">&#39;default&#39;</span>, <span class="o">[</span><span class="s1">&#39;concat&#39;</span>, <span class="s1">&#39;uglify&#39;</span><span class="o">])</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p>}
+<code>
+Изменим это дефолтное задание для запуска минификации:
+</code>
+grunt.registerTask(&lsquo;default&rsquo;, [&lsquo;concat&rsquo;, &lsquo;uglify&rsquo;]);
+```</p>
 
 <p>Правда очень похоже на&nbsp;установки объединения файлов?</p>
 
@@ -288,53 +237,35 @@
 
 <h2>Оптимизируем изображения с&nbsp;помощью Grunt</h2>
 
-<p>Давайте перейдём дальше. Официальный плагин для минификации изображений&nbsp;— это <a href="https://github.com/gruntjs/grunt-contrib-imagemin">grunt-contrib-imagemin</a>. Установите его:</p>
+<p>Давайте перейдём дальше. Официальный плагин для минификации изображений&nbsp;— это <a href="https://github.com/gruntjs/grunt-contrib-imagemin">grunt-contrib-imagemin</a>. Установите его:
+<code>
+npm install grunt-contrib-imagemin --save-dev
+</code>
+Зарегистрируйте его в&nbsp;<em>Gruntfile.js</em>:
+<code>
+grunt.loadNpmTasks('grunt-contrib-imagemin');
+</code>
+Сконфигурируйте его:
+```
+imagemin: {</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm install grunt-contrib-imagemin --save-dev
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>dynamic: {
+    files: [{
+        expand: true,
+        cwd: 'images/',
+        src: ['**/*.{png,jpg,gif}'],
+        dest: 'images/build/'
+    }]
+}
+</code></pre>
 
-
-<p>Зарегистрируйте его в&nbsp;<em>Gruntfile.js</em>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>grunt.loadNpmTasks<span class="o">(</span><span class="s1">&#39;grunt-contrib-imagemin&#39;</span><span class="o">)</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Сконфигурируйте его:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>imagemin: <span class="o">{</span>
-</span><span class='line'>    dynamic: <span class="o">{</span>
-</span><span class='line'>        files: <span class="o">[{</span>
-</span><span class='line'>            expand: <span class="nb">true</span>,
-</span><span class='line'>            cwd: <span class="s1">&#39;images/&#39;</span>,
-</span><span class='line'>            src: <span class="o">[</span><span class="s1">&#39;**/*.{png,jpg,gif}&#39;</span><span class="o">]</span>,
-</span><span class='line'>            dest: <span class="s1">&#39;images/build/&#39;</span>
-</span><span class='line'>        <span class="o">}]</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Убедитесь, что он&nbsp;запущен:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>grunt.registerTask<span class="o">(</span><span class="s1">&#39;default&#39;</span>, <span class="o">[</span><span class="s1">&#39;concat&#39;</span>, <span class="s1">&#39;uglify&#39;</span>, <span class="s1">&#39;imagemin&#39;</span><span class="o">])</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Запустите grunt и&nbsp;посмотрите как осуществляется чудестное сжатие изображений:</p>
+<p>}
+<code>
+Убедитесь, что он&amp;nbsp;запущен:
+</code>
+grunt.registerTask(&lsquo;default&rsquo;, [&lsquo;concat&rsquo;, &lsquo;uglify&rsquo;, &lsquo;imagemin&rsquo;]);
+```
+Запустите grunt и&nbsp;посмотрите как осуществляется чудестное сжатие изображений:</p>
 
 <p><img src="images/grunt/squished-images.gif" alt="Сжатие изображений" /></p>
 
@@ -362,30 +293,22 @@
 
 <p>Установите его сами. Это делается аналогично тому, как мы&nbsp;делали раньше. Мы&nbsp;сконфигурируем его указав определённые файлы (или папки, или оба варианта) для наблюдения. Под наблюдением, я&nbsp;имею в&nbsp;виду мониторинг, удаление или добавление файлов. Далее мы&nbsp;указываем ему какие задачи нужно выполнить при обнаружении изменений.</p>
 
-<p>Мы&nbsp;хотим запустить наше объединение и&nbsp;минификацию при обнаружении любых изменений в&nbsp;папке&nbsp;<em>/js/</em>. Когда это происходит, мы&nbsp;должны запустить задачи связанные с&nbsp;JavaScript. А&nbsp;когда эти вещи происходят где-то в&nbsp;другом месте, то&nbsp;не&nbsp;нужно запускать JavaScript-заданий, таким образом:</p>
+<p>Мы&nbsp;хотим запустить наше объединение и&nbsp;минификацию при обнаружении любых изменений в&nbsp;папке&nbsp;<em>/js/</em>. Когда это происходит, мы&nbsp;должны запустить задачи связанные с&nbsp;JavaScript. А&nbsp;когда эти вещи происходят где-то в&nbsp;другом месте, то&nbsp;не&nbsp;нужно запускать JavaScript-заданий, таким образом:
+```
+watch: {</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>watch: <span class="o">{</span>
-</span><span class='line'>    scripts: <span class="o">{</span>
-</span><span class='line'>        files: <span class="o">[</span><span class="s1">&#39;js/*.js&#39;</span><span class="o">]</span>,
-</span><span class='line'>        tasks: <span class="o">[</span><span class="s1">&#39;concat&#39;</span>, <span class="s1">&#39;uglify&#39;</span><span class="o">]</span>,
-</span><span class='line'>        options: <span class="o">{</span>
-</span><span class='line'>            spawn: <span class="nb">false</span>,
-</span><span class='line'>        <span class="o">}</span>,
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>scripts: {
+    files: ['js/*.js'],
+    tasks: ['concat', 'uglify'],
+    options: {
+        spawn: false,
+    },
+} 
+</code></pre>
 
-
-<p>Всё пока вроде просто, правда? Одной непонятной штукой может показаться spawn. И&nbsp;знаете что? Я&nbsp;и&nbsp;сам не&nbsp;знаю что это. Из&nbsp;всего, что написано в&nbsp;документациии&nbsp;— я&nbsp;понял что это дефолтное значение. Такая вселенная разработки. Просто оставьте как есть и&nbsp;будет всё&nbsp;ок, либо&nbsp;же почитайте доки.</p>
+<p>}
+```
+Всё пока вроде просто, правда? Одной непонятной штукой может показаться spawn. И&nbsp;знаете что? Я&nbsp;и&nbsp;сам не&nbsp;знаю что это. Из&nbsp;всего, что написано в&nbsp;документациии&nbsp;— я&nbsp;понял что это дефолтное значение. Такая вселенная разработки. Просто оставьте как есть и&nbsp;будет всё&nbsp;ок, либо&nbsp;же почитайте доки.</p>
 
 <p>Внимание: Иногда очень разочаровывает, когда вроде всё понятно в&nbsp;уроке, а&nbsp;на&nbsp;практике ничего не&nbsp;полчается. Если вы&nbsp;не&nbsp;можете заставить Grunt запуститься после изменений, то&nbsp;скорее всего вы&nbsp;допустили ошибку в&nbsp;вашем Gruntfile.js файле. Это может выглядеть следующим образом в&nbsp;терминале:</p>
 
@@ -397,49 +320,35 @@
 
 <p>Последним пунктом нашего списка вначале статьи&nbsp;— это использование Sass&nbsp;— ещё другое задание Grunt очень для нас подходит. Но&nbsp;подождите? Разве технически Sass не&nbsp;на&nbsp;Ruby? Действительно это так. Но&nbsp;есть ещё версия <a href="https://github.com/sindresorhus/grunt-sass">Sass для Node</a> и&nbsp;таким образом не&nbsp;добавляет дополнительные зависимости в&nbsp;наш проект, поэтому мы&nbsp;будем использовать официальный плагин <a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a>, который подразумевает, что вы&nbsp;установили Sass на&nbsp;своей машине. Если вы&nbsp;не&nbsp;установили, то&nbsp;следуйте <a href="http://sass-lang.com/install">инструкциям командной строки</a>.</p>
 
-<p>Что прикольное в&nbsp;Sass&nbsp;— это&nbsp;то, что он&nbsp;может делать объединение и&nbsp;минификацию самостоятельно. Поэтому для нашего маленького проекта мы&nbsp;можем компилировать наш global.scss:</p>
+<p>Что прикольное в&nbsp;Sass&nbsp;— это&nbsp;то, что он&nbsp;может делать объединение и&nbsp;минификацию самостоятельно. Поэтому для нашего маленького проекта мы&nbsp;можем компилировать наш global.scss:
+```
+sass: {</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sass: <span class="o">{</span>
-</span><span class='line'>    dist: <span class="o">{</span>
-</span><span class='line'>        options: <span class="o">{</span>
-</span><span class='line'>            style: <span class="s1">&#39;compressed&#39;</span>
-</span><span class='line'>        <span class="o">}</span>,
-</span><span class='line'>        files: <span class="o">{</span>
-</span><span class='line'>            <span class="s1">&#39;css/build/global.css&#39;</span>: <span class="s1">&#39;css/global.scss&#39;</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>dist: {
+    options: {
+        style: 'compressed'
+    },
+    files: {
+        'css/build/global.css': 'css/global.scss'
+    }
+} 
+</code></pre>
 
+<p>}
+<code>
+Не&amp;nbsp;хотелось&amp;nbsp;бы вручную запускать эту задачу. Уже у&amp;nbsp;нас есть установленный плагин для наблюдения, давайте его использовать! В&amp;nbsp;конфигурацию наблюдения добавим ещё одну подзадачу:
+</code>
+css: {</p>
 
-<p>Не&nbsp;хотелось&nbsp;бы вручную запускать эту задачу. Уже у&nbsp;нас есть установленный плагин для наблюдения, давайте его использовать! В&nbsp;конфигурацию наблюдения добавим ещё одну подзадачу:</p>
+<pre><code>files: ['css/*.scss'],
+tasks: ['sass'],
+options: {
+    spawn: false,
+}
+</code></pre>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>css: <span class="o">{</span>
-</span><span class='line'>    files: <span class="o">[</span><span class="s1">&#39;css/*.scss&#39;</span><span class="o">]</span>,
-</span><span class='line'>    tasks: <span class="o">[</span><span class="s1">&#39;sass&#39;</span><span class="o">]</span>,
-</span><span class='line'>    options: <span class="o">{</span>
-</span><span class='line'>        spawn: <span class="nb">false</span>,
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p>}
+```</p>
 
 <p>Давайте это сделаем. Теперь каждый раз мы&nbsp;меняем любой из&nbsp;наших Sass файлов, то&nbsp;CSS будет автоматически обновлятся.</p>
 
@@ -447,22 +356,18 @@
 
 <p>LiveReload очень просто установить поскольку он&nbsp;уже встроен в&nbsp;наш плагин наблюдения. Всё что нужно сделать это:</p>
 
-<p>Установите <a href="http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-">плагин для браузера</a>. Добавьте сверху конфигурации наблюдения:</p>
+<p>Установите <a href="http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-">плагин для браузера</a>. Добавьте сверху конфигурации наблюдения:
+```
+. watch: {</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>. watch: <span class="o">{</span>
-</span><span class='line'>    options: <span class="o">{</span>
-</span><span class='line'>        livereload: <span class="nb">true</span>,
-</span><span class='line'>    <span class="o">}</span>,
-</span><span class='line'>    scripts: <span class="o">{</span>
-</span><span class='line'>    /* etc */
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>options: {
+    livereload: true,
+},
+scripts: {   
+/* etc */
+</code></pre>
 
+<p>```</p>
 
 <p>Перезапустите браузер и&nbsp;нажмите на&nbsp;LiveReload иконку для активации. Обновите Sass файл и&nbsp;наблюдайте как страница автоматически изменится.
 Live reloading browser
